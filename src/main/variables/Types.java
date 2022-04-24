@@ -32,6 +32,68 @@ public class Types {
         double doubleVal = 0.0d; // 8 byte (4.9E-324 ~ 1.8E308)
     }
 
+    /**
+     * char
+     * 
+     * 문자형 타입인 char 는 문자를 유니코드로 변환하여 정수값으로 저장한다.
+     * 그렇기 때문에 문자 리터럴이 아닌 정수값을 사용하여 유니코드를 직접 저장할 수도 있다.
+     */
+    public void charType() {
+        // ch 를 int 로 변환하면 'a' 의 유니코드 값인 97 이 된다.
+        char ch = 'a';
+        System.out.printf("%c = %d\n", ch, (int)ch); // a = 97
+
+        // 반대로 유니코드 97 을 문자형에 저장하면 문자 'a' 로 변환된다.
+        ch = 97;
+        System.out.printf("%c = %d\n", ch, (int)ch); // a = 97
+    }
+    
+    /**
+     * integer
+     * 
+     * 정수형 타입으로는 byte, short, int, long 이 있다.
+     * 이들은 표현할 수 있는 값의 범위가 다르기 때문에 이 점을 유의하여 사용해야 한다.
+     */
+    public void intTypes() {
+        System.out.println("Bytes, Min value, Max value of integer types.");
+        System.out.printf("Byte : BYTES=%d MIN_VALUE=%d MAX_VALUE=%d\n", Byte.BYTES, Byte.MIN_VALUE, Byte.MAX_VALUE);
+        System.out.printf("Short : BYTES=%d MIN_VALUE=%d MAX_VALUE=%d\n", Short.BYTES, Short.MIN_VALUE, Short.MAX_VALUE);
+        System.out.printf("Integer : BYTES=%d MIN_VALUE=%d MAX_VALUE=%d\n", Integer.BYTES, Integer.MIN_VALUE, Integer.MAX_VALUE);
+        System.out.printf("Long : BYTES=%d MIN_VALUE=%d MAX_VALUE=%d\n", Long.BYTES, Long.MIN_VALUE, Long.MAX_VALUE);
+
+        /**
+         * 각 타입이 가지는 값의 범위를 넘어서는 경우를 오버플로우라고 하며, 이때는 의도한 값이 아닌 다른 값으로 저장된다.
+         * 정수 타입은 이진수로 값이 저장되는데, 이때 가장 첫번째 비트는 부호비트가 된다.
+         * 오버플로우가 발생하는 경우 부호비트가 영향을 받아서 숫자의 부호가 바뀌기도 한다.
+         */
+        int num = Integer.MAX_VALUE;
+        System.out.printf("2147483647 = %d\n", num); // 2147483647
+
+        // overflow 가 발생하여 2147483648 이 아닌 -2147483648 가 저장된다.
+        num++;
+        System.out.printf("2147483647 + 1 = %d\n", num); // -2147483648
+
+        num = Integer.MIN_VALUE; // -2147483648
+        System.out.printf("-2147483648 = %d\n", num); // -2147483648
+
+        // 반대로 최솟값에서 부호가 변경되어 2147483647 으로 값이 바뀐다.
+        num--;
+        System.out.printf("-2147483648 - 1 = %d\n", num); // 2147483647
+    }
+
+    /**
+     * float
+     * 
+     * 실수형 타입으로는 float 와 double 이 존재한다.
+     * 각각 4 byte, 8 byte 로 표현할 수 있는 값의 범위가 다르다.
+     * 또한 정수와 다르게 부호 (S), 지수 (E), 가수 (M) 세 부분으로 나뉘어진다.
+     * S (1 bit) + E (8 bit) + M (23 bit) -> ± M * 10 ^ E 으로 값이 표현된다.
+     */
+    public void floatTypes() {
+        System.out.println("Bytes, Min value, Max value of float types.");
+        System.out.printf("Byte : BYTES=%d MIN_VALUE=%f MAX_VALUE=%f\n", Float.BYTES, Float.MIN_VALUE, Float.MAX_VALUE);
+        System.out.printf("Byte : BYTES=%d MIN_VALUE=%f MAX_VALUE=%f\n", Double.BYTES, Double.MIN_VALUE, Double.MAX_VALUE);
+    }
     
     /**
      * reference type
