@@ -94,6 +94,37 @@ public class Types {
         System.out.printf("Byte : BYTES=%d MIN_VALUE=%f MAX_VALUE=%f\n", Float.BYTES, Float.MIN_VALUE, Float.MAX_VALUE);
         System.out.printf("Byte : BYTES=%d MIN_VALUE=%f MAX_VALUE=%f\n", Double.BYTES, Double.MIN_VALUE, Double.MAX_VALUE);
     }
+
+    /**
+     * type casting
+     * 
+     * 형변환은 변수나 리터럴을 다른 타입으로 변환하는 것을 의미한다.
+     * 형변환을 할 때는 형변환시킬 변수나 리터럴 앞에 변환시킬 타입을 괄호와 함께 붙여주면 된다.
+     * primitive type 에서는 boolean 을 제외한 나머지 타입들 간의 형변환이 가능하다.
+     */
+    public void typeCasting() {
+        char ch = 'a';
+        int chToInt = (int)ch; // char 형 ch 의 값은 'a' 가 int 형으로 변환되어 97 로 저장된다.
+        System.out.printf("char %c converted to int %d\n", ch, chToInt); // char a converted to int 97
+
+        // 실수형에서 정수형으로 변환할 때는 소수점 이하의 값은 버려진다.
+        float f = 1.1f;
+        int fToInt = (int)f;
+        System.out.printf("float %f converted to int %d\n", f, fToInt); // float 1.100000 converted to int 1
+
+        // 실수의 소수점을 버리고 남은 정수부가 정수의 저장 범위를 넘어서는 경우 오버플로우가 발생한다.
+        float maxFloat = Float.MAX_VALUE;
+        fToInt = (int)maxFloat;
+        System.out.printf("float %f converted to int %d\n", maxFloat, fToInt); // float 340282346638528860000000000000000000000.000000 converted to int 2147483647
+        
+        // 정수형에서 실수형으로 변경할 때는 실수형의 표현 범위가 더 넓기 때문에 오버플로우가 발생하지는 않는다.
+        // 그렇지만 실수형은 값을 표현하는 정밀도에 제한이 있는데, 이로 인해서 변환된 값에 오차가 발생할 수 있다.
+        int maxInt = Integer.MAX_VALUE;
+        float intToFloat = (float)maxInt;
+        System.out.printf("int %d converted to float %f\n", maxInt, intToFloat); // int 2147483647 converted to float 2147483648.000000
+        double intToDouble = (double)maxInt;
+        System.out.printf("int %d converted to float %f\n", maxInt, intToDouble); // int 2147483647 converted to float 2147483647.000000
+    }
     
     /**
      * reference type
