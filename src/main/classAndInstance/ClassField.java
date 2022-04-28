@@ -58,4 +58,13 @@ public class ClassField {
     public void method(int num, String str) {
         System.out.println(num + " " + str);
     }
+
+    /**
+     * static 메서드는 클래스 변수와 같이 인스턴스 생성없이 클래스 이름만으로 사용할 수 있다.
+     * 그 말은 인스턴스 생성 전에도 호출할 수 있기 때문에 인스턴스 생성 시에 만들어지는 인스턴스 변수는 메서드 안에서 사용할 수 없다.
+     * 만약에 인스턴스 변수를 사용하지 않는 다면 static 을 붙이는 것을 고려해보는 것이 좋다.
+     */
+    public static void staticMethod() {
+        System.out.println("static method");
+    }
 }
