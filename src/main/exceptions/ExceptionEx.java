@@ -2,7 +2,6 @@ package main.exceptions;
 
 import java.io.DataInputStream;
 import java.io.FileInputStream;
-import java.io.IOException;
 
 /**
  * Execption
@@ -59,17 +58,29 @@ public class ExceptionEx {
 
     }
 
+    /**
+     * try-with-resources 문
+     * 
+     * try-with-resoures 문은 try-catch 문에서 자원을 사용하고 자동으로 반환하도록 할 때 사용한다.
+     * try 문에서 괄호안에 사용할 자원을 선언하면 해당 자원은 close() 를 호출하지 않아도 try-catch 문을 탈출할 때 자동으로 반환된다.
+     */
     public void tryWithResoutces() {
-        /**
-         * try-with-resources 문
-         * 
-         * try-with-resoures 문은 try-catch 문에서 자원을 사용하고 자동으로 반환하도록 할 때 사용한다.
-         * try 문에서 괄호안에 사용할 자원을 선언하면 해당 자원은 close() 를 호출하지 않아도 try-catch 문을 탈출할 때 자동으로 반환된다.
-         */
         try (FileInputStream fis = new FileInputStream("input.dat")) {
             DataInputStream dis = new DataInputStream(fis);
         } catch (Exception e) {
-            //TODO: handle exception
+            e.printStackTrace();
+        }
+    }
+
+    public void exceptionReThrowing() {
+        try {
+            throw new Exception();
+        } catch (RuntimeException e) {
+            // exception re-throwing: 특정한 예외가 발생했을 경우 해당 예제를 다시 발생시켜서 더 상위의 메서드에서 이를 처리하도록 할 수 있다.
+            throw e;
+        } catch(Exception e) {
+            // chained exception: 특정한 예외가 발생한 경우 다른 새로운 예외를 발생시켜서 다른 영역에서 처리하도록 할 수 있다.
+            throw new RuntimeException();
         }
     }
 }
