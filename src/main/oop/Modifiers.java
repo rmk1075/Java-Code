@@ -1,4 +1,4 @@
-package main.oop.modifiers;
+package main.oop;
 
 /**
  * Modifier
@@ -8,6 +8,22 @@ package main.oop.modifiers;
  * 그 외에는 static, final, abstract, native, transient, synchronized, volatile 등 각각의 기능을 가지고 있는 제어자들이 있다.
  */
 public class Modifiers {
+    /**
+     * access modifiers
+     * 
+     * 접근 제어자는 public, protected, default, private 의 4가지가 존재한다.
+     * - public: 해당 리소스에 대한 접근에 제한이 없다.
+     * - protected: 같은 패키지 내부, 다른 패키지에서 해당 클래스를 상속한 자손 클래스에서 접근이 가능하다.
+     * - default: 같은 패키지 내무에서만 접근이 가능하다.
+     * - private: 같은 클래스 내부에서만 접근이 가능하다.
+     * 
+     * 해당 제어자에 따른 접근 예제는 main.oop.encapsulation 에 작성되어있다.
+     */
+    public int publicVar = 0;
+    protected int protectedVar = 1;
+    int defaultVar = 2; // default 제어자는 명시적으로 default 를 붙이지 않는다.
+    private int privateVar = 3;
+
     /**
      * static
      * 
