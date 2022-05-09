@@ -1,4 +1,4 @@
-package main.variables;
+package main.members;
 
 /**
  * Variable (변수)
