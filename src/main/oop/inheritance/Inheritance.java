@@ -1,4 +1,4 @@
-package main.oop.polymorphism;
+package main.oop.inheritance;
 
 /**
  * Inheritance
